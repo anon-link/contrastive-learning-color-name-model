@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Name Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 Color<->Name Translator</h1>
+
+        <div class="main-content">
+            <!-- 颜色选择器部分 -->
+            <div class="color-picker-section">
+                <h2>Select Color</h2>
+                <div class="color-picker-container">
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="colorPicker" value="#ff0000">
+                        <label for="colorPicker" class="color-picker-label">
+                            <span class="picker-icon">🎨</span>
+                            <span class="picker-text">Click to choose color</span>
+                        </label>
+                    </div>
+                    <div class="selected-color">
+                        <div class="color-preview" id="colorPreview"></div>
+                        <div class="color-info">
+                            <span id="rgbValue">RGB(255, 0, 0)</span>
+                            <span id="hexValue">#FF0000</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- RGB手动输入部分 -->
+                <div class="rgb-input-container">
+                    <h3>Manual RGB Input</h3>
+                    <div class="rgb-input-group">
+                        <input type="text" id="rgbInput" placeholder="255,215,123" class="rgb-text-input">
+                        <!-- <button id="applyRgbBtn" class="btn btn-small">Apply</button> -->
+                    </div>
+                    <div class="rgb-input-help">
+                        <small>Supported formats: 255,215,123 or 255 215 123</small>
+                    </div>
+                </div>
+                
+                <button id="predictBtn" class="btn btn-primary">Predict Top 10 Color Names</button>
+            </div>
+
+            <!-- 预测结果部分 -->
+            <div class="results-section">
+                <h2>Prediction Results</h2>
+                <div id="predictionResults" class="results-container">
+                    <p class="placeholder">Select a color and click predict to see top 10 recommended color names</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 颜色名称输入部分 -->
+        <div class="name-input-section">
+            <h2>Enter Color Name</h2>
+            <div class="input-container">
+                <input type="text" id="colorNameInput" placeholder="Enter color name, e.g.: red, blue, green..." class="name-input">
+                <button id="recommendBtn" class="btn btn-secondary">Recommend Top 10 Colors</button>
+            </div>
+            <div id="recommendResults" class="results-container">
+                <p class="placeholder">Enter a color name and click recommend to see top 10 recommended colors</p>
+            </div>
+        </div>
+
+        <!-- 示例颜色 -->
+        <div class="examples-section">
+            <h2>Example Colors</h2>
+            <div class="example-colors">
+                <div class="example-color" data-color="#ff0000" style="background-color: #ff0000;">Red</div>
+                <div class="example-color" data-color="#00ff00" style="background-color: #00ff00;">Green</div>
+                <div class="example-color" data-color="#0000ff" style="background-color: #0000ff;">Blue</div>
+                <div class="example-color" data-color="#ffff00" style="background-color: #ffff00;">Yellow</div>
+                <div class="example-color" data-color="#ff00ff" style="background-color: #ff00ff;">Magenta</div>
+                <div class="example-color" data-color="#00ffff" style="background-color: #00ffff;">Cyan</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
